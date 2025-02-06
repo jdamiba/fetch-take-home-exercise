@@ -22,7 +22,7 @@ function processReceiptsHandler(req, res) {
     return res.status(400).json({ error: "The receipt is invalid" });
   }
   receiptsMap[hash(req.body)] = req.body;
-  res.send(hash(req.body));
+  res.json({ id: hash(req.body) });
 }
 
 function pointsHandler(req, res) {

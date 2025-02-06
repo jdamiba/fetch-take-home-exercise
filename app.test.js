@@ -37,10 +37,10 @@ describe("POST /receipts/process", () => {
     const res = await request(app)
       .post("/receipts/process")
       .send(exampleJSON)
-      .expect("Content-Type", /html/)
+      .expect("Content-Type", /json/)
       .expect(200);
 
-    expect(res.text).toBe(hash(exampleJSON));
+    expect(res.text).toBe(`{"id":"${hash(exampleJSON)}"}`);
   });
 
   it("should return the correct points", async () => {
